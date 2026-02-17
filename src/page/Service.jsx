@@ -1,5 +1,5 @@
-import React from "react"
-import "./Service.css"
+import React from "react";
+import "./Service.css";
 
 function Service() {
   const cards = [
@@ -19,20 +19,10 @@ function Service() {
       title: "History",
       desc: "Previous Day Weather History.",
     },
-  ]
+  ];
 
   return (
     <div className="service-container">
-      <nav className="navbar">
-        <h2></h2>
-
-        <div className="nav-links">
-          <span>Home </span>
-          <span>Service </span>
-          <span>Booking </span>
-        </div>
-      </nav>
-
       <div className="rain">
         {Array.from({ length: 120 }).map((_, i) => (
           <div
@@ -66,7 +56,7 @@ function Service() {
 
       <footer className="footer">© 2026 Natanegara Langit</footer>
     </div>
-  )
+  );
 }
 
-export default Service
+export default Service;
