@@ -1,0 +1,142 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* MAIN CONTAINER */
+.service-container {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 40px;
+
+  background: linear-gradient(180deg, #4facfe, #e8f3ff);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* HEADER */
+.service-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #ffffff;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* CARDS */
+.card-wrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  width: 260px;
+  padding: 25px;
+
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  margin-bottom: 8px;
+  color: #2b6cb0;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* BUTTON */
+.card button {
+  margin-top: 15px;
+}
+
+.rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.drop {
+  position: absolute;
+  top: -50px;
+
+  width: 2px;
+  height: 40px;
+
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(120vh);
+  }
+}
+
+.card button:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: first baseline;
+  margin-bottom: 50px;
+  margin-top: auto;
+  color: white;
+}
+
+.nav-links span {
+  margin-left: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.nav-links span:hover {
+  opacity: 1;
+}
+ .footer {
+  margin-top: 80px;
+  text-align: center;
+  color: rgb(16, 8, 240);
+  opacity: 0.7;
+  font-size: 13px;
+}
