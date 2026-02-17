@@ -57,11 +57,12 @@ body,
   flex: 0 0 260px;
   width: 260px;
   padding: 25px;
-  max-width: 100%;
+
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
   transition: 0.3s;
 }
 
@@ -99,6 +100,7 @@ body,
   top: -50px;
   width: 2px;
   height: 40px;
+
   background: rgba(255, 255, 255, 0.8);
   border-radius: 2px;
   animation: fall linear infinite;
@@ -119,7 +121,26 @@ body,
   transition: 0.2s;
 }
 
-.service-footer {
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: first baseline;
+  margin-bottom: 50px;
+  margin-top: auto;
+  color: white;
+}
+
+.nav-links span {
+  margin-left: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.nav-links span:hover {
+  opacity: 1;
+}
+.footer {
   margin-top: 80px;
   text-align: center;
   color: rgb(16, 8, 240);

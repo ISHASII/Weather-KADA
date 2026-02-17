@@ -1,5 +1,5 @@
-import React from "react";
-import "./Service.css";
+import React from "react"
+import "./Service.css"
 
 function Service() {
   const cards = [
@@ -19,10 +19,20 @@ function Service() {
       title: "History",
       desc: "Previous Day Weather History.",
     },
-  ];
+  ]
 
   return (
     <div className="service-container">
+      <nav className="navbar">
+        <h2></h2>
+
+        <div className="nav-links">
+          <span>Home </span>
+          <span>Service </span>
+          <span>Booking </span>
+        </div>
+      </nav>
+
       <div className="rain">
         {Array.from({ length: 120 }).map((_, i) => (
           <div
@@ -37,26 +47,26 @@ function Service() {
         ))}
       </div>
 
+      {/* HEADER */}
       <header className="service-header">
-        <div className="container">
-          <h1>Natanegara Langit</h1>
-          <p>We Predicted The Sky Before It Moves</p>
-        </div>
+        <h1>Natanegara Langit</h1>
+        <p>We Predicted The Sky Before It Moves</p>
       </header>
 
-      <div className="container">
-        <div className="card-wrapper">
-          {cards.map((card, index) => (
-            <div className="card" key={index}>
-              <h3>{card.title}</h3>
-              <p>{card.desc}</p>
-              <button>View Details →</button>
-            </div>
-          ))}
-        </div>
+      {/* CARDS */}
+      <div className="card-wrapper">
+        {cards.map((card, index) => (
+          <div className="card" key={index}>
+            <h3>{card.title}</h3>
+            <p>{card.desc}</p>
+            <button>View Details →</button>
+          </div>
+        ))}
       </div>
+
+      <footer className="footer">© 2026 Natanegara Langit</footer>
     </div>
-  );
+  )
 }
 
-export default Service;
+export default Service
