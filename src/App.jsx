@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import Service from "./pages/Service"
-import BookingPage from "./pages/BookingPage"
-
-function App() {
-  return <BookingPage />
-=======
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
@@ -25,7 +18,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
->>>>>>> 28eb883ca7205d374107efeeb26775d07b177f35
 }
 
 export default App;
