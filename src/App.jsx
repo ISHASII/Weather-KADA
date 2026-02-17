@@ -1,8 +1,8 @@
-import "./App.css";
-import Service from "./page/Service";
+import "./App.css"
+import Service from "./pages/Service"
 
 function App() {
-  return <Service />;
+  return <Service />
 }
 
-export default App;
+export default App

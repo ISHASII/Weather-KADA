@@ -3,7 +3,9 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -51,11 +53,11 @@ html, body, #root {
   width: 260px;
   padding: 25px;
 
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
 
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 
   transition: 0.3s;
 }
@@ -93,7 +95,7 @@ html, body, #root {
   width: 2px;
   height: 40px;
 
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 2px;
 
   animation: fall linear infinite;
@@ -133,7 +135,7 @@ html, body, #root {
 .nav-links span:hover {
   opacity: 1;
 }
- .footer {
+.footer {
   margin-top: 80px;
   text-align: center;
   color: rgb(16, 8, 240);
