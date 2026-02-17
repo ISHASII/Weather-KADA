@@ -1,0 +1,69 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+.booking-page {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #dbefff, #b8dcff, #8cc8ff);
+  color: #0a2a43;
+  overflow: hidden;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.card-wrapper {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.booking-page h1 {
+  text-align: center;
+
+  margin: 0 0 12px 0;
+}
+
+.booking-page p {
+  text-align: center;
+  margin: 0;
+  font-size: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.time-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-header {
+  margin: 40px 0 20px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.btn-konfirmasi {
+  padding: 10px 50px;
+}

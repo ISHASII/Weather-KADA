@@ -1,8 +1,8 @@
-import "./App.css"
 import Service from "./pages/Service"
+import BookingPage from "./pages/BookingPage"
 
 function App() {
-  return <Service />
+  return <BookingPage />
 }
 
 export default App
