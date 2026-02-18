@@ -8,7 +8,7 @@ function Service() {
       desc: "Weather Control with an Intelligent Prediction System.",
     },
     {
-      title: "Real-Time Dat",
+      title: "Real-Time Data",
       desc: "Monitor Today’s Weather.",
     },
     {
@@ -23,6 +23,7 @@ function Service() {
 
   return (
     <div className="service-container">
+      {/* RAIN EFFECT */}
       <div className="rain">
         {Array.from({ length: 120 }).map((_, i) => (
           <div
@@ -39,8 +40,8 @@ function Service() {
 
       {/* HEADER */}
       <header className="service-header">
-        <h1>Natanegara Langit</h1>
-        <p>We Predicted The Sky Before It Moves</p>
+        <h1>Our Services</h1>
+        <p>Smart Weather Intelligence System</p>
       </header>
 
       {/* CARDS */}
@@ -53,8 +54,6 @@ function Service() {
           </div>
         ))}
       </div>
-
-      <footer className="footer">© 2026 Natanegara Langit</footer>
     </div>
   );
 }
