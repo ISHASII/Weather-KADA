@@ -1,5 +1,5 @@
-import { useState } from "react"
-import "./BookingPage.css"
+import { useState } from "react";
+import "./contact.css";
 
 function BookingPage() {
   return (
@@ -152,7 +152,7 @@ function BookingPage() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default BookingPage
+export default BookingPage;
