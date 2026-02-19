@@ -12,11 +12,18 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<BookingPage />} />
+        <Route path="/" element={<Home />} />
         <Route path="/service" element={<Service />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/contact"
+          element={
+            <div className="booking-page">
+              <Contact />
+            </div>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )

@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import weatherReducer from "../features/weatherSlice";
+import { configureStore } from "@reduxjs/toolkit"
+import weatherReducer from "../features/weatherSlice"
+import contactReducer from "../features/contactSlice"
 
 // ============================================
 // Redux Store Configuration
@@ -10,7 +11,8 @@ const store = configureStore({
   reducer: {
     // Weather reducer handles all weather-related state
     weather: weatherReducer,
+    contact: contactReducer,
   },
-});
+})
 
-export default store;
+export default store

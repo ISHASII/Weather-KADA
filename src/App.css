@@ -40,3 +40,9 @@ section {
     padding: 50px 0;
   }
 }
+
+.booking-content {
+  flex: 1; /* ambil sisa height di bawah navbar */
+  overflow-y: auto; /* scroll vertical */
+  padding: 20px;
+}
