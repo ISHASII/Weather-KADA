@@ -9,7 +9,7 @@ import {
 import "./Weather.css";
 
 function getIconUrl(iconCode) {
-  return `https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${iconCode}.png`;
+  return `https://raw.githubusercontent.com/manifestinteractive/weather-underground-icons/master/dist/icons/${iconCode}.svg`;
 }
 
 function formatTime(timestamp) {
