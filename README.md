@@ -152,27 +152,3 @@ const [searchInput, setSearchInput] = useState("");
 | Flexbox (ops.)     |    3 | ✅ layout flex di beberapa file               |
 | Responsive (ops.)  |    2 | ✅ media queries tersedia                     |
 | Stylish CSS (ops.) |    2 | ✅ gradients, glass, animasi                  |
-
----
-
-## 📌 Catatan implementasi penting
-
-- API key untuk OpenWeatherMap disimpan di `src/features/weatherSlice.js` (untuk demo; sebaiknya pindahkan ke env variable saat produksi).
-- Logo proyek: `src/assets/image/logo-1.png` dan dipakai di `Navbar.jsx`.
-- Untuk menambahkan anggota/pembagian tugas, edit README atau gunakan `DOKUMENTASI.md` yang sudah disediakan.
-
----
-
-## 🙋‍♂️ Cara kontribusi singkat
-
-1. Fork / clone repository
-2. Buat branch baru: `git checkout -b feat/nama-fitur`
-3. Commit & push, lalu buat PR ke `main`
-
----
-
-Terima kasih — kalau mau saya tambahkan contoh screenshot, penjelasan arsitektur, atau file presentasi (slide), kasih tahu saja.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
