@@ -8,6 +8,7 @@ function BookingPage() {
   const formData = useSelector((state) => state.contact)
   const [showModal, setShowModal] = useState(false)
   const [isAgreed, setIsAgreed] = useState(false)
+  const [errors, setErrors] = useState({})
 
   const handleChange = (section, field) => (e) => {
     dispatch(
@@ -17,6 +18,11 @@ function BookingPage() {
         value: e.target.value,
       }),
     )
+
+    setErrors((prev) => ({
+      ...prev,
+      [field]: "",
+    }))
   }
 
   const handlePackageChange = (e) => {
@@ -27,6 +33,129 @@ function BookingPage() {
       }),
     )
   }
+
+  const validateForm = () => {
+    const newErrors = {}
+
+    // Basic Information
+    if (!formData.basicInformation.fullName.trim()) {
+      newErrors.fullName = "Full Name is required"
+    }
+
+    if (!formData.basicInformation.email.trim()) {
+      newErrors.email = "Email is required"
+    } else if (!/\S+@\S+\.\S+/.test(formData.basicInformation.email)) {
+      newErrors.email = "Invalid email format"
+    }
+
+    if (!formData.basicInformation.number.trim()) {
+      newErrors.number = "WhatsApp number is required"
+    }
+
+    // Event Details
+    if (!formData.eventDetails.eventName.trim()) {
+      newErrors.eventName = "Event name is required"
+    }
+
+    if (!formData.eventDetails.eventType) {
+      newErrors.eventType = "Select event type"
+    }
+
+    if (!formData.eventDetails.eventDate) {
+      newErrors.eventDate = "Select event date"
+    }
+
+    if (!formData.eventDetails.startTime || !formData.eventDetails.endTime) {
+      newErrors.time = "Start & End time required"
+    }
+
+    if (!formData.eventDetails.location.trim()) {
+      newErrors.location = "Location is required"
+    }
+
+    if (!formData.eventDetails.venueType) {
+      newErrors.venueType = "Select venue type"
+    }
+
+    // Requirements
+    if (!formData.requirement.priorityLevel) {
+      newErrors.priorityLevel = "Select priority level"
+    }
+
+    if (!formData.requirement.estimateParticipants) {
+      newErrors.estimateParticipants = "Enter participants"
+    }
+
+    // Package
+    if (!formData.servicePackage) {
+      newErrors.servicePackage = "Select a service package"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const cards = [
+    {
+      title: "Atmospheric Event Safeguarding",
+      desc: "Professional Weather Protection for Your Events.",
+      detail:
+        "We provide dedicated weather safeguarding services to ensure your event runs smoothly without disruption from rain, including:",
+      price: "💵 Rp1.500.000 – Rp2.000.000 / event",
+      list: [
+        "Outdoor concerts & festivals.",
+        "Weddings & private events.",
+        "Product launches.",
+        "Government functions.",
+        "Film & television productions.",
+      ],
+    },
+    {
+      title: "Strategic Weather Assessment",
+      desc: "Weather Risk Analysis & Event Planning Consultation.",
+      detail:
+        "Make informed decisions with our strategic weather assessment services.",
+      price: "💵 Rp2.500.000 – Rp3.000.000 / event",
+      list: [
+        "Comprehensive weather risk analysis based on your event location, season, and time frame.",
+        "Optimal scheduling recommendations, helping you select the best date and time to minimize weather-related disruptions.",
+        "Pre-event consultation sessions to support smarter planning, logistics alignment, and contingency preparation.",
+        "Customized weather insights tailored to your event scale, audience size, and operational needs.",
+        "Ideal for clients who prioritize precision, reliability, and proactive coordination to ensure a seamless event experience.",
+      ],
+    },
+    {
+      title: "Localized Atmospheric Intervention",
+      desc: "Location-Based Weather Management.",
+      detail:
+        "We apply adaptive techniques tailored to each venue’s unique conditions, including:",
+      price: "💵 Rp3.500.000 – Rp4.000.000 / event",
+      list: [
+        "Geographic condition assessment, evaluating terrain, elevation, and surrounding environments.",
+        "Local wind pattern analysis to anticipate atmospheric movement affecting your event area.",
+        "Regional weather history evaluation to identify recurring climate trends and risks.",
+        "Site-specific intervention strategies, customized for each location to maximize effectiveness.",
+        "A fully tailored operational approach, ensuring optimal results through precise, location-driven solutions.",
+      ],
+    },
+    {
+      title: "Premium Confidential Service",
+      desc: "Exclusive & Discreet Event Handling.",
+      detail: "Designed for high-profile or sensitive occasions:",
+      price: "💵 Rp4.500.000 – Rp5.000.000 / event",
+      list: [
+        "Dedicated core team support.",
+        "Strict client confidentiality.",
+        "No public documentation.",
+        "Limited coordination with authorized parties only.",
+        "Perfect for VIP events requiring privacy and professionalism.",
+      ],
+    },
+  ]
+
+  const selectedCard = cards.find(
+    (card) => card.title === formData.servicePackage,
+  )
 
   return (
     <div className="booking-page">
@@ -44,6 +173,9 @@ function BookingPage() {
               value={formData.basicInformation.fullName}
               onChange={handleChange("basicInformation", "fullName")}
             />
+            {errors.fullName && (
+              <small className="error-text">{errors.fullName}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -53,6 +185,9 @@ function BookingPage() {
               value={formData.basicInformation.email}
               onChange={handleChange("basicInformation", "email")}
             />
+            {errors.email && (
+              <small className="error-text">{errors.email}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -62,6 +197,9 @@ function BookingPage() {
               value={formData.basicInformation.number}
               onChange={handleChange("basicInformation", "number")}
             />
+            {errors.number && (
+              <small className="error-text">{errors.number}</small>
+            )}
           </div>
 
           {/* <!-- B. Event Details --> */}
@@ -74,6 +212,9 @@ function BookingPage() {
               value={formData.eventDetails.eventName}
               onChange={handleChange("eventDetails", "eventName")}
             />
+            {errors.eventName && (
+              <small className="error-text">{errors.eventName}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -83,12 +224,15 @@ function BookingPage() {
               onChange={handleChange("eventDetails", "eventType")}
             >
               <option value="">Select Event Type</option>
-              <option value="wedding">Wedding</option>
-              <option value="concert">Concert</option>
-              <option value="festival">Festival</option>
-              <option value="corporate">Corporate Event</option>
-              <option value="film">Film Production</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Concert">Concert</option>
+              <option value="Festival">Festival</option>
+              <option value="Corporate">Corporate Event</option>
+              <option value="Other">Other</option>
             </select>
+            {errors.eventType && (
+              <small className="error-text">{errors.eventType}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -99,6 +243,9 @@ function BookingPage() {
               value={formData.eventDetails.eventDate}
               onChange={handleChange("eventDetails", "eventDate")}
             />
+            {errors.eventDate && (
+              <small className="error-text">{errors.eventDate}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -116,6 +263,7 @@ function BookingPage() {
                 onChange={handleChange("eventDetails", "endTime")}
               />
             </div>
+            {errors.time && <small className="error-text">{errors.time}</small>}
           </div>
 
           <div className="form-group">
@@ -125,6 +273,9 @@ function BookingPage() {
               value={formData.eventDetails.location}
               onChange={handleChange("eventDetails", "location")}
             />
+            {errors.location && (
+              <small className="error-text">{errors.location}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -135,9 +286,12 @@ function BookingPage() {
               onChange={handleChange("eventDetails", "venueType")}
             >
               <option value="">Select Venue Type</option>
-              <option value="indoor">Indoor</option>
-              <option value="outdoor">Outdoor</option>
+              <option value="Indoor">Indoor</option>
+              <option value="Outdoor">Outdoor</option>
             </select>
+            {errors.venueType && (
+              <small className="error-text">{errors.venueType}</small>
+            )}
           </div>
 
           {/* <!-- C. Weather Protection Requirements --> */}
@@ -152,10 +306,13 @@ function BookingPage() {
               onChange={handleChange("requirement", "priorityLevel")}
             >
               <option value="">Select Priority Level</option>
-              <option value="standard">Standard</option>
-              <option value="high">High</option>
-              <option value="critical">Critical (VIP / Large Scale)</option>
+              <option value="Standard">Standard</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical (VIP / Large Scale)</option>
             </select>
+            {errors.priorityLevel && (
+              <small className="error-text">{errors.priorityLevel}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -165,15 +322,25 @@ function BookingPage() {
               value={formData.requirement.estimateParticipants}
               onChange={handleChange("requirement", "estimateParticipants")}
             />
+            {errors.estimateParticipants && (
+              <small className="error-text">
+                {errors.estimateParticipants}
+              </small>
+            )}
           </div>
 
           <div className="form-group">
-            <label for="area">Area Size (Optional)</label>
+            <label for="area">
+              Area Size in m<sup>2</sup> (Optional)
+            </label>
             <input
               type="text"
               value={formData.requirement.areaSize}
               onChange={handleChange("requirement", "areaSize")}
             />
+            {errors.areaSize && (
+              <small className="error-text">{errors.areaSize}</small>
+            )}
           </div>
 
           <div className="form-group">
@@ -190,46 +357,36 @@ function BookingPage() {
           {/* <!-- D. Service Package --> */}
           <div className="form-header">Service Package</div>
 
-          <div className="form-group">
-            <label>
-              <input
-                type="radio"
-                value="Basic Atmospheric Safeguard"
-                checked={
-                  formData.servicePackage === "Basic Atmospheric Safeguard"
-                }
-                onChange={handlePackageChange}
-              />
-              Basic Atmospheric Safeguard
-            </label>
-          </div>
+          {errors.servicePackage && (
+            <small className="error-text">{errors.servicePackage}</small>
+          )}
+          <div className="package-group">
+            {[
+              "Premium Confidential Service",
+              "Localized Atmospheric Intervention",
+              "Strategic Weather Assessment",
+              "Atmospheric Event Safeguarding",
+            ].map((pkg) => (
+              <label
+                key={pkg}
+                className={`package-card ${
+                  formData.servicePackage === pkg ? "active" : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  value={pkg}
+                  checked={formData.servicePackage === pkg}
+                  onChange={handlePackageChange}
+                />
+                <div className="card-indicator"></div>
 
-          <div className="form-group">
-            <label>
-              <input
-                type="radio"
-                value="Strategic Climate Protection"
-                checked={
-                  formData.servicePackage === "Strategic Climate Protection"
-                }
-                onChange={handlePackageChange}
-              />
-              Strategic Climate Protection
-            </label>
-          </div>
-
-          <div className="form-group">
-            <label>
-              <input
-                type="radio"
-                value="Premium Full-Day Sky Control"
-                checked={
-                  formData.servicePackage === "Premium Full-Day Sky Control"
-                }
-                onChange={handlePackageChange}
-              />
-              Premium Full-Day Sky Control
-            </label>
+                <div className="card-content">
+                  <h4>{pkg}</h4>
+                  <p>Professional weather management solution</p>
+                </div>
+              </label>
+            ))}
           </div>
         </div>
         <div className="form-group agreement">
@@ -251,7 +408,10 @@ function BookingPage() {
               return
             }
 
-            console.log("Data Form:", formData)
+            const isValid = validateForm()
+
+            if (!isValid) return
+
             setShowModal(true)
           }}
         >
@@ -320,7 +480,22 @@ function BookingPage() {
 
             <div className="summary-section">
               <h3>Selected Package</h3>
-              <p>{formData.servicePackage}</p>
+
+              {selectedCard && (
+                <div className="selected-package-card">
+                  <h4>{selectedCard.title}</h4>
+                  <p className="package-desc">{selectedCard.desc}</p>
+                  <p className="package-detail">{selectedCard.detail}</p>
+
+                  <ul>
+                    {selectedCard.list.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+
+                  <div className="package-price">{selectedCard.price}</div>
+                </div>
+              )}
             </div>
 
             <div className="modal-buttons">

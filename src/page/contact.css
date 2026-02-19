@@ -27,6 +27,7 @@
   border-radius: 20px;
   padding: 50px 45px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  gap: 5px;
 }
 
 .card-wrapper h1 {
@@ -40,6 +41,7 @@
   text-align: center;
   font-size: 16px;
   color: #4a657d;
+  margin: 0;
 }
 
 /* ================= FORM ================= */
@@ -55,7 +57,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 
 .form-group label {
@@ -90,6 +92,98 @@
   gap: 10px;
 }
 
+/* ================== Radio Button ====================== */
+.package-group {
+  display: grid;
+  gap: 20px;
+}
+
+/* Base Card */
+.package-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px;
+  border-radius: 18px;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+/* Hide radio */
+.package-card input {
+  display: none;
+}
+
+/* Hover effect */
+.package-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #6366f1;
+}
+
+/* Active state */
+.package-card.active {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, #6366f1, #4f46e5) border-box;
+  box-shadow: 0 25px 50px rgba(79, 70, 229, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Left glowing indicator */
+.card-indicator {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Dot inside */
+.card-indicator::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #4f46e5;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.25s ease;
+}
+
+/* Active indicator */
+.package-card.active .card-indicator {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.15);
+}
+
+.package-card.active .card-indicator::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Text Styling */
+.card-content h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.card-content p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
 /* ================= AGREEMENT ================= */
 .agreement {
   margin-top: 25px;
@@ -116,6 +210,24 @@
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+/* ================ HANDLE ERROR ================= */
+.input-error {
+  border: 2px solid #ff4d4f !important;
+  background-color: #fff1f0;
+}
+
+.error-text {
+  color: #ff4d4f;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
+
+select.input-error,
+textarea.input-error {
+  border: 2px solid #ff4d4f !important;
 }
 
 .btn-konfirmasi:hover {
@@ -182,6 +294,64 @@
   text-align: left;
 }
 
+.selected-package-card {
+  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  border: 1px solid #dbe3ff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.selected-package-card h4 {
+  margin-bottom: 6px;
+  font-size: 18px;
+  color: #1e3a8a;
+}
+
+.package-desc {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.package-detail {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.selected-package-card ul {
+  padding-left: 18px;
+  margin-bottom: 15px;
+}
+
+.selected-package-card li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.package-price {
+  font-weight: bold;
+  font-size: 16px;
+  color: #0f172a;
+  padding-top: 10px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+/* Smooth appear */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ================= MODAL BUTTONS ================= */
 .modal-buttons {
   display: flex;
@@ -237,5 +407,12 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 600px) {
+  .package-group {
+    grid-template-columns: 1fr;
   }
 }
