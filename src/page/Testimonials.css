@@ -119,8 +119,12 @@
 }
 
 @keyframes fall {
-  0% { transform: translateY(-100px); }
-  100% { transform: translateY(120vh); }
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(120vh);
+  }
 }
 
 /* RESPONSIVE */
