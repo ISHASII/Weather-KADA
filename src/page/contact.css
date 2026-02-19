@@ -363,12 +363,13 @@ textarea.input-error {
 .confirm-btn,
 .cancel-btn {
   flex: 1;
-  padding: 12px;
+  padding: 12px 50px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
   font-size: 14px;
   transition: 0.2s ease;
+  margin-top: 30px;
 }
 
 .confirm-btn {
@@ -410,9 +411,141 @@ textarea.input-error {
   }
 }
 
+/* ================= LOADING AND SUCCESS MODAL ==================== */
+.loading-modal {
+  text-align: center;
+  padding: 40px;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid #4f46e5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.success-modal {
+  text-align: center;
+  padding: 40px;
+  animation: fadeScale 0.4s ease;
+}
+
+.success-icon {
+  font-size: 50px;
+  color: #10b981;
+  margin-bottom: 15px;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* ================= Responsive ================= */
-@media (max-width: 600px) {
-  .package-group {
-    grid-template-columns: 1fr;
+/* ================= MOBILE ================= */
+@media (max-width: 480px) {
+  .booking-page {
+    padding: 40px 12px;
+  }
+
+  .card-wrapper {
+    padding: 25px 18px;
+    border-radius: 14px;
+  }
+
+  .card-wrapper h1 {
+    font-size: 20px;
+  }
+
+  .card-wrapper p {
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .time-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .package-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .card-indicator {
+    margin-bottom: 10px;
+  }
+
+  .selected-package-card {
+    padding: 15px;
+  }
+
+  .selected-package-card h4 {
+    font-size: 16px;
+  }
+
+  .package-price {
+    font-size: 14px;
+  }
+
+  .modal {
+    padding: 20px;
+    max-height: 90vh;
+  }
+
+  .modal h2 {
+    font-size: 18px;
+  }
+
+  .summary-section h3 {
+    font-size: 13px;
+  }
+
+  .summary-section p {
+    font-size: 12px;
+  }
+
+  .btn-konfirmasi {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .success-modal p {
+    margin: 0 40px;
   }
 }

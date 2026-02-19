@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./contact.css"
 import { updateField, resetForm } from "../features/contactSlice"
 import { useDispatch, useSelector } from "react-redux"
@@ -9,6 +9,8 @@ function BookingPage() {
   const [showModal, setShowModal] = useState(false)
   const [isAgreed, setIsAgreed] = useState(false)
   const [errors, setErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
 
   const handleChange = (section, field) => (e) => {
     dispatch(
@@ -19,11 +21,17 @@ function BookingPage() {
       }),
     )
 
-    setErrors((prev) => ({
-      ...prev,
-      [field]: "",
-    }))
+    // setErrors((prev) => ({
+    //   ...prev,
+    //   [field]: "",
+    // }))
   }
+
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      setErrors({})
+    }
+  }, [formData])
 
   const handlePackageChange = (e) => {
     dispatch(
@@ -92,6 +100,13 @@ function BookingPage() {
     }
 
     setErrors(newErrors)
+
+    // 🔥 TAMBAHAN ALERT
+    if (Object.keys(newErrors).length > 0) {
+      alert("Please complete all required fields correctly before submitting.")
+      return false
+    }
+
     return Object.keys(newErrors).length === 0
   }
 
@@ -502,9 +517,16 @@ function BookingPage() {
               <button
                 className="confirm-btn"
                 onClick={() => {
-                  dispatch(resetForm())
-                  setIsAgreed(false)
                   setShowModal(false)
+                  setIsLoading(true)
+
+                  // Loading
+                  setTimeout(() => {
+                    setIsLoading(false)
+                    setShowSuccessModal(true)
+                    dispatch(resetForm())
+                    setIsAgreed(false)
+                  }, 2000)
                 }}
               >
                 Confirm Booking
@@ -520,6 +542,35 @@ function BookingPage() {
           </div>
         </div>
       )}
+
+      {isLoading && (
+        <div className="modal-overlay">
+          <div className="modal loading-modal">
+            <div className="loader"></div>
+            <p>Processing your booking...</p>
+          </div>
+        </div>
+      )}
+
+      {showSuccessModal && (
+        <div className="modal-overlay">
+          <div className="modal success-modal">
+            <div className="success-icon">✔</div>
+            <h2>Booking Confirmed!</h2>
+            <p>
+              Your weather protection request has been successfully submitted.
+            </p>
+
+            <button
+              className="confirm-btn"
+              onClick={() => setShowSuccessModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Animasi Hujan */}
       <div className="rain">
         {Array.from({ length: 80 }).map((_, i) => (
