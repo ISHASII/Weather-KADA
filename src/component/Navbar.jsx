@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
+import logo from "../assets/image/logo-1.png";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
@@ -104,6 +105,11 @@ export default function Navbar() {
 
           <div className="navbar-container">
             <Link to="/" className="navbar-logo">
+              <img
+                src={logo}
+                alt="Logo Natanegara Langit"
+                className="navbar-logo-img"
+              />
               <div className="navbar-logo-text">
                 <h3>Natanegara Langit</h3>
                 <span>We Predicted The Sky Before It Moves</span>
