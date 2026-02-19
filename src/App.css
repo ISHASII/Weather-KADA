@@ -41,8 +41,7 @@ section {
   }
 }
 
-.booking-content {
+.service-page {
   flex: 1; /* ambil sisa height di bawah navbar */
   overflow-y: auto; /* scroll vertical */
-  padding: 20px;
 }
