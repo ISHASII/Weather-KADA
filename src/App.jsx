@@ -1,11 +1,11 @@
-import "./App.css"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Navbar from "./component/Navbar"
-import Home from "./page/Home"
-import Service from "./page/Service"
-import Weather from "./page/Weather"
-import Testimonials from "./page/Testimonials"
-import Contact from "./page/Contact"
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./component/Navbar";
+import Home from "./page/Home";
+import Service from "./page/Service";
+import Weather from "./page/Weather";
+import Testimonials from "./page/Testimonials";
+import Contact from "./page/Contact";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
